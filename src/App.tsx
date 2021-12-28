@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ThemeProvider } from "styled-components";
+import { theme } from './theme/theme'
 
-function App() {
+// components
+import Button from './components/Button';
+import Header from './layout/Header'
+import Game from './layout/Game';
+// import Winner from './layout/Winner';
+// import Rules from './layout/Rules';
+
+const App: React.FC = () => {
+  const [gameState, setGameState] = useState("start");
+  const [score, setScore] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [ currCoin, setCurrCoin ] = useState('');
+
+  const openRulesModal = () => {
+    setOpenModal(true);
+  }
+
+  const changeGameState = (newState: string) => {
+    setGameState(newState);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Header score={score} />
+      <main>
+        <Game gameState={gameState} currCoin={currCoin}/>
+      </main>
+      <Button secondary content="Rules" openModal={openRulesModal}/>
+    </ThemeProvider>
   );
 }
 
