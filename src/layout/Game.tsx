@@ -1,9 +1,14 @@
 import React, {useContext, useState, useEffect} from "react";
 import styled from "styled-components";
 import { GameContext } from "../context/GameContext"
-import PlayerCoin from "../components/PlayerCoin";
 import BounceLoader from "react-spinners/BounceLoader";
-import { setTimeout } from "timers/promises";
+
+// ui components
+import PlayerCoin from "../components/PlayerCoin";
+import CoinWrapper from "./wrappers/CoinWrapper";
+import PlayerDiv from "./wrappers/PlayerDiv";
+
+
 
 const Game: React.FC = () => {
 
@@ -103,35 +108,4 @@ const StyledSection = styled.section`
     flex-direction: row;
     justify-content:center;
     align-items: center;
-`
-
-const PlayerDiv = styled.div`
-    text-align: center;
-    width: 100%;
-
-    & > h3 {
-        text-transform: uppercase;
-        letter-spacing: 1.4px;
-        font-size: 2.4rem;
-        color: ${ p => p.theme.colors.white};
-        text-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2)
-    }
-`
-
-const CoinWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    padding: 7rem 0;
-
-    & > span {
-        width: 30rem;
-        height: 30rem;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 50%;
-        display: flex;
-        justify-content:center;
-        align-items: center;
-    }
 `

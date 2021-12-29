@@ -8,8 +8,11 @@ import ChoiceCoin from '../components/ChoiceCoin';
 
 const Start: React.FC = () => {
     const keys = useContext(GameContext);
-    const [ gameState, setGameState ] = keys.gameStateKey;
-    const [ currCoin, setCurrCoin ] = keys.currCoinKey;
+    const gameState = keys.gameStateKey;
+    const currCoin = keys.currCoinKey;
+
+    const setGameState = gameState[1];
+    const setCurrCoin = currCoin[1];
 
     const coinChoiceHandler = (coin: string) => {
         setCurrCoin(coin);

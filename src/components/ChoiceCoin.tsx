@@ -87,14 +87,14 @@ const Scissors = styled(ChoiceButton)`
     background-image: ${p => p.theme.gradients.scissors};
     box-shadow: 0 0.7rem 0 ${ p => p.theme.colors.scissors};
 
-    top: 2rem;
+    top: 2.8rem;
     right: 22rem;
 `
 
 const Paper = styled(ChoiceButton)`
     background-image: ${p => p.theme.gradients.paper};
     box-shadow: 0 0.7rem 0 ${ p => p.theme.colors.paper};
-    top: 2rem;
+    top: 2.8rem;
     left: 22rem; 
 `
 

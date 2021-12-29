@@ -1,9 +1,16 @@
 import React, {useContext} from "react";
 import styled from "styled-components";
 import { keyframes } from 'styled-components'
+
+// shared state 
 import { GameContext } from "../context/GameContext"
+
+// ui components
 import PlayerCoin from "../components/PlayerCoin";
 import Button from "../components/Button";
+import CoinWrapper from "./wrappers/CoinWrapper";
+import PlayerDiv from "./wrappers/PlayerDiv";
+
 
 const Winner: React.FC = () => {
     // shared game state
@@ -59,44 +66,31 @@ const StyledSection = styled.section`
     align-items: center;
 `
 
-const PlayerDiv = styled.div`
-    text-align: center;
-    padding: 0 8rem;
+// const PlayerDiv = styled.div`
+//     text-align: center;
+//     padding: 0 8rem;
 
-    & > h3 {
-        text-transform: uppercase;
-        letter-spacing: 1.4px;
-        font-size: 2.4rem;
-        color: ${ p => p.theme.colors.white};
-        text-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2)
-    }
-`
+//     & > h3 {
+//         text-transform: uppercase;
+//         letter-spacing: 1.4px;
+//         font-size: 2.4rem;
+//         color: ${ p => p.theme.colors.white};
+//         text-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2)
+//     }
+// `
 
-const breatheAnimation = keyframes`
- 0% { transform: scale(1); opacity: 1 }
- 100% { transform: scale(1.9); opacity: 0.1 }
-`
+// const breatheAnimation = keyframes`
+//  0% { transform: scale(1); opacity: 1 }
+//  100% { transform: scale(1.9); opacity: 0.1 }
+// `
 
-const CoinWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    padding: 7rem 0;
-
-    /* &::after {
-        content: "";
-        width: 28rem;
-        height: 28rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        position: absolute;
-        z-index: -100;
-        animation-name: ${breatheAnimation};
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-    } */
-`
+// const CoinWrapper = styled.div`
+//     width: 100%;
+//     display: flex;
+//     justify-content:center;
+//     align-items: center;
+//     padding: 7rem 0;
+// `
 
 const ResultDiv = styled.div`
      width: auto;
