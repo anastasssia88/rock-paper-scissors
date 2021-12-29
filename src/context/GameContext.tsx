@@ -15,7 +15,7 @@ export const GameContext = createContext<GameContextInterface>(undefined!);
 export const GameProvider = ({ children }: React.PropsWithChildren<{}>) => {
     const [gameState, setGameState] = useState("start");
     const [score, setScore] = useState(0);
-    const [openModal, setOpenModal] = useState(false);
+    const [openModal, setOpenModal] = useState(true);
     const [ currCoin, setCurrCoin ] = useState('');
     const [houseCoin, setHouseCoin] = useState('');
     const [winner, setWinner] = useState('');

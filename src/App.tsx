@@ -11,9 +11,7 @@ import Header from './layout/Header'
 import Start from './layout/Start'
 import Game from './layout/Game'
 import Winner from './layout/Winner'
-
-// import Winner from './layout/Winner';
-// import Rules from './layout/Rules';
+import Rules from './layout/Rules';
 
 const App: React.FC = () => {
   const keys = useContext(GameContext);
@@ -23,12 +21,13 @@ const App: React.FC = () => {
   const [openModal, setOpenModal] = keys.openModalKey;
   const [ currCoin, setCurrCoin ] = keys.currCoinKey;
 
-  const openRulesModal = () => {
-    setOpenModal(true);
+  const handleRulesModal = () => {
+    setOpenModal(!openModal);
   }
   
   return (
     <ThemeProvider theme={theme}>
+      <Rules openModal={openModal} handleRulesModal={handleRulesModal}/>
       <Header />
       <main>
         {
@@ -41,7 +40,7 @@ const App: React.FC = () => {
           gameState === "result" && <Winner />
         }
       </main>
-      <Button secondary content="Rules" handleGameState={openRulesModal}/>
+      <Button secondary content="Rules" handleGameState={handleRulesModal}/>
     </ThemeProvider>
   );
 }
