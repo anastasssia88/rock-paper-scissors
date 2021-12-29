@@ -11,17 +11,25 @@ const Start: React.FC = () => {
     const [ gameState, setGameState ] = keys.gameStateKey;
     const [ currCoin, setCurrCoin ] = keys.currCoinKey;
 
+    const coinChoiceHandler = (coin: string) => {
+        setCurrCoin(coin);
+        setGameState("game");
+    }
+
     return(
         <StyledSection>
             <div>
                 <ChoiceCoin 
                     character="scissors" 
+                    coinChoiceHandler={coinChoiceHandler}
                 />
                 <ChoiceCoin 
                     character="paper" 
+                    coinChoiceHandler={coinChoiceHandler}
                 />
                 <ChoiceCoin 
                     character="rock" 
+                    coinChoiceHandler={coinChoiceHandler}
                 />
             </div>
         </StyledSection>

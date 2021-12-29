@@ -17,9 +17,7 @@ const App: React.FC = () => {
   const keys = useContext(GameContext);
 
   const [gameState, setGameState] = keys.gameStateKey;
-  const [score, setScore] = keys.scoreKey;
   const [openModal, setOpenModal] = keys.openModalKey;
-  const [ currCoin, setCurrCoin ] = keys.currCoinKey;
 
   const handleRulesModal = () => {
     setOpenModal(!openModal);

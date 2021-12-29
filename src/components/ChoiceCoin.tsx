@@ -1,6 +1,5 @@
-import React, {useContext} from "react";
+import React from "react";
 import styled from "styled-components";
-import { GameContext } from "../context/GameContext"
 
 // images
 import ScissorsImg from "../images/icon-scissors.svg"
@@ -10,26 +9,24 @@ import RockImg from "../images/icon-rock.svg"
 interface Props {
     character?: string;
     children?: React.ReactNode;
+    coinChoiceHandler: (coin: string) => void;
   };
 
+interface StyledProps {
+    character?: string;
+    children?: React.ReactNode;
+};
 
-const ChoiceCoin: React.FC<Props> = ({character}) => {
-    const keys = useContext(GameContext);
-    const [ gameState, setGameState ] = keys.gameStateKey;
-    const [ currCoin, setCurrCoin ] = keys.currCoinKey;
 
-    const coinChoiceHandler = (coin: string) => {
-        setCurrCoin(coin);
-        setGameState("game");
-    }
+const ChoiceCoin: React.FC<Props> = ({character, coinChoiceHandler}) => {
 
     if (character === "scissors") {
         return(
             <Scissors>
                 <button onClick={() => coinChoiceHandler("scissors")}>
-                <ImageBox>
-                    <img src={ScissorsImg} alt="Scissors coin" />
-                </ImageBox>
+                    <ImageBox>
+                        <img src={ScissorsImg} alt="Scissors coin" />
+                    </ImageBox>
                 </button>
             </Scissors>
         )
@@ -37,9 +34,9 @@ const ChoiceCoin: React.FC<Props> = ({character}) => {
         return(
             <Paper>
                 <button onClick={() => coinChoiceHandler("paper")}>
-                <ImageBox>
-                    <img src={PaperImg} alt="Paper coin" />
-                </ImageBox>
+                    <ImageBox>
+                        <img src={PaperImg} alt="Paper coin" />
+                    </ImageBox>
                 </button>
             </Paper>
         )
@@ -47,9 +44,9 @@ const ChoiceCoin: React.FC<Props> = ({character}) => {
     return(
             <Rock>
                 <button onClick={() => coinChoiceHandler("rock")}>
-                <ImageBox>
-                    <img src={RockImg} alt="Rock coin" />
-                </ImageBox>
+                    <ImageBox>
+                        <img src={RockImg} alt="Rock coin" />
+                    </ImageBox>
                 </button>
             </Rock>
     )
@@ -58,7 +55,7 @@ const ChoiceCoin: React.FC<Props> = ({character}) => {
 export default ChoiceCoin;
 
 
-const ChoiceButton = styled.div<Props>`
+const ChoiceButton = styled.div<StyledProps>`
     
     border-radius: 50%;
     transition: transform 0.2s;
@@ -107,7 +104,7 @@ const Rock = styled(ChoiceButton)`
     bottom: 8rem;
 `
 
-const ImageBox = styled.div<Props>`
+const ImageBox = styled.div<StyledProps>`
     background: ${p => p.theme.colors.gray};
     box-shadow: inset 0 0.7rem 0 rgba(0, 0, 0, 0.1);
     width: 13rem;

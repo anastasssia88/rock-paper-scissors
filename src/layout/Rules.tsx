@@ -38,7 +38,6 @@ const StyledModal = styled.div<Props>`
 
     opacity: 1;
     visibility: visible;
-    
 
     opacity: ${ p => p.openModal === false && "0"};
     visibility: ${ p => p.openModal === false && "hidden"};
