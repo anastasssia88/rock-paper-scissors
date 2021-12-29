@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import { GameContext } from "../context/GameContext"
 
-interface Props {
-    score: number;
-  };
 
-const ScoreBox: React.FC<Props> = ({ score }) => {
+
+const ScoreBox: React.FC = () => {
+    const keys = useContext(GameContext);
+    const [score, setScore] = keys.scoreKey;
+    const [ houseScore, setHouseScore ] = keys.houseScoreKey;
+
     return(
         <StyledDiv>
             <span>Score</span>
-            <h3>{score}</h3>
+            <h3>{score}:{houseScore}</h3>
         </StyledDiv>
     )
 }

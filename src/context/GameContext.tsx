@@ -6,7 +6,8 @@ interface GameContextInterface {
     openModalKey: [boolean, (value: boolean) => void];
     currCoinKey: [string, (value: string) => void];
     houseCoinKey: [string, (value: string) => void];
-    winnerKey: [string, (value: string) => void]
+    winnerKey: [string, (value: string) => void];
+    houseScoreKey: [number, React.Dispatch<React.SetStateAction<number>>];
   }
 
 
@@ -15,10 +16,11 @@ export const GameContext = createContext<GameContextInterface>(undefined!);
 export const GameProvider = ({ children }: React.PropsWithChildren<{}>) => {
     const [gameState, setGameState] = useState("start");
     const [score, setScore] = useState(0);
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     const [ currCoin, setCurrCoin ] = useState('');
     const [houseCoin, setHouseCoin] = useState('');
     const [winner, setWinner] = useState('');
+    const [houseScore, setHouseScore] = useState(0);
   
     return (
       <GameContext.Provider
@@ -28,7 +30,8 @@ export const GameProvider = ({ children }: React.PropsWithChildren<{}>) => {
             openModalKey: [openModal, setOpenModal],
             currCoinKey: [currCoin, setCurrCoin],
             houseCoinKey: [houseCoin, setHouseCoin],
-            winnerKey: [winner, setWinner]
+            winnerKey: [winner, setWinner],
+            houseScoreKey: [houseScore, setHouseScore]
         }}
       >
         {children}

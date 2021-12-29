@@ -19,6 +19,7 @@ const Game: React.FC = () => {
     const [ winner, setWinner ] = keys.winnerKey;
     const [gameState, setGameState] = keys.gameStateKey;
     const [ score, setScore ] = keys.scoreKey;
+    const [ houseScore, setHouseScore ] = keys.houseScoreKey;
 
 
     // local state
@@ -47,11 +48,12 @@ const Game: React.FC = () => {
         ) {
             console.log(`You win!!! Because ${currCoin} beats ${houseCoin}`)
             setWinner("currCoin");
-            setScore( prevState => (prevState + 1));
+            setScore(prevState => (prevState + 1));
             setGameState("result");
         } else {
             console.log(`You loose :'(  Because ${houseCoin} beats ${currCoin}`)
             setWinner("houseCoin");
+            setHouseScore(prevState => (prevState + 1))
             setGameState("result");
         }
     }
