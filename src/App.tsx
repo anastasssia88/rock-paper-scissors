@@ -10,6 +10,7 @@ import Button from './components/Button';
 import Header from './layout/Header'
 import Start from './layout/Start'
 import Game from './layout/Game'
+import Winner from './layout/Winner'
 
 // import Winner from './layout/Winner';
 // import Rules from './layout/Rules';
@@ -25,10 +26,6 @@ const App: React.FC = () => {
   const openRulesModal = () => {
     setOpenModal(true);
   }
-
-  const changeGameState = (newState: string) => {
-    setGameState(newState);
-  }
   
   return (
     <ThemeProvider theme={theme}>
@@ -40,9 +37,11 @@ const App: React.FC = () => {
         {
           gameState === "game" && <Game />
         }
-        
+        {
+          gameState === "result" && <Winner />
+        }
       </main>
-      <Button secondary content="Rules" openModal={openRulesModal}/>
+      <Button secondary content="Rules" handleGameState={openRulesModal}/>
     </ThemeProvider>
   );
 }

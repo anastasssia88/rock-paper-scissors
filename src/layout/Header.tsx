@@ -10,23 +10,32 @@ const Header: React.FC = () => {
   const [score, setScore] = keys.scoreKey;
 
   return (
-    <StyledDiv>
+    <StyledSection>
+      <div>
       <StyledImg src={OriginalLogo} alt="game logo" />
       <ScoreBox score={score} />
-    </StyledDiv>
+      </div>
+      
+    </StyledSection>
   );
 }
 
 export default Header;
 
-const StyledDiv = styled.div`
+const StyledSection = styled.section`
   width: 100%;
-  border: 3px solid ${p => p.theme.colors.headerOutline};
-  border-radius: 1.6rem;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
+  padding: 0 20%;
+  padding-top: 5rem;
+  
+  & > div {
+    width: 100%;
+    border: 3px solid ${p => p.theme.colors.headerOutline};
+    border-radius: 1.6rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+  }
 `
 
 const StyledImg = styled.img``

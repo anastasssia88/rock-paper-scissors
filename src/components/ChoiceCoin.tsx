@@ -90,21 +90,21 @@ const Scissors = styled(ChoiceButton)`
     background-image: ${p => p.theme.gradients.scissors};
     box-shadow: 0 0.7rem 0 ${ p => p.theme.colors.scissors};
 
-    top: 7.5rem;
+    top: 2rem;
     right: 22rem;
 `
 
 const Paper = styled(ChoiceButton)`
     background-image: ${p => p.theme.gradients.paper};
     box-shadow: 0 0.7rem 0 ${ p => p.theme.colors.paper};
-    top: 7.5rem;
+    top: 2rem;
     left: 22rem; 
 `
 
 const Rock = styled(ChoiceButton)`
     background-image: ${p => p.theme.gradients.rock};
     box-shadow: 0 0.7rem 0 ${ p => p.theme.colors.rock};
-    bottom: 12rem;
+    bottom: 8rem;
 `
 
 const ImageBox = styled.div<Props>`

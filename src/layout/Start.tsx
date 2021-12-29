@@ -12,34 +12,41 @@ const Start: React.FC = () => {
     const [ currCoin, setCurrCoin ] = keys.currCoinKey;
 
     return(
-        <StyledDiv>
-            <ChoiceCoin 
-                character="scissors" 
-            />
-            <ChoiceCoin 
-                character="paper" 
-            />
-            <ChoiceCoin 
-                character="rock" 
-            />
-        </StyledDiv>
+        <StyledSection>
+            <div>
+                <ChoiceCoin 
+                    character="scissors" 
+                />
+                <ChoiceCoin 
+                    character="paper" 
+                />
+                <ChoiceCoin 
+                    character="rock" 
+                />
+            </div>
+        </StyledSection>
     )
 }
 
 export default Start;
 
 
-const StyledDiv = styled.div`
-    width: 100%;
+const StyledSection = styled.section`
+    padding: 5rem 20%;
     height: 100%;
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
 
-    background:url(${bgTriangle}) no-repeat center;
-    object-fit: fill;
-    position: relative;
+    & > div {
+        height: 100%;
+        
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+
+        background:url(${bgTriangle}) no-repeat center;
+        object-fit: fill;
+        position: relative;
+    }
 `
 

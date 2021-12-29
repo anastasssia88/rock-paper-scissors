@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body > div {
-    padding: 5rem 20%;
+    /* padding: 5rem 20%; */
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -6,11 +6,18 @@ import BounceLoader from "react-spinners/BounceLoader";
 import { setTimeout } from "timers/promises";
 
 const Game: React.FC = () => {
+
+    // shared game state
     const keys = useContext(GameContext);
     const [ currCoin ] = keys.currCoinKey;
+    const [ houseCoin, setHouseCoin ] = keys.houseCoinKey;
+    const [ winner, setWinner ] = keys.winnerKey;
+    const [gameState, setGameState] = keys.gameStateKey;
+    const [ score, setScore ] = keys.scoreKey;
 
-    const [loading, setLoading] = useState(true);
-    const [houseCoin, setHouseCoin] = useState("");
+
+    // local state
+    const [ loading, setLoading ] = useState(true);
 
     const getRandomCoin = () => {
         let randomNum =  Math.floor(Math.random() * 3);
@@ -22,6 +29,28 @@ const Game: React.FC = () => {
             setHouseCoin("paper")
         }
     }
+
+    const pickWinner = () => {
+        if(currCoin === houseCoin) {
+            console.log("It's a tie")
+            setWinner("none");
+            setGameState("result");
+        } else if (
+            (currCoin === "paper" && houseCoin === "rock") ||
+            (currCoin === "rock" && houseCoin === "scissors") || 
+            (currCoin === "scissors" && houseCoin === "paper")
+        ) {
+            console.log(`You win!!! Because ${currCoin} beats ${houseCoin}`)
+            setWinner("currCoin");
+            setScore( prevState => (prevState + 1));
+            setGameState("result");
+        } else {
+            console.log(`You loose :'(  Because ${houseCoin} beats ${currCoin}`)
+            setWinner("houseCoin");
+            setGameState("result");
+        }
+    }
+
     useEffect(() => {
         getRandomCoin();
     }, [])
@@ -32,8 +61,17 @@ const Game: React.FC = () => {
         }, 1000)
     }, [houseCoin])
 
+    useEffect(() => {
+        window.setTimeout(() => {
+            if(houseCoin) {
+                console.log("Picking the winner ...");
+                pickWinner();
+            }
+        }, 1000)
+    }, [loading])
+
     return(
-        <StyledDiv>
+        <StyledSection>
             <PlayerDiv>
                 <h3>You picked</h3>
                 <CoinWrapper>
@@ -51,16 +89,16 @@ const Game: React.FC = () => {
                      
                 </CoinWrapper>
             </PlayerDiv>
-        </StyledDiv>
+        </StyledSection>
     )
 }
 
 export default Game;
 
-const StyledDiv = styled.div`
+const StyledSection = styled.section`
+    padding: 0 20%;
     width: 100%;
     height: 100%;
-    padding: 4rem 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content:center;
@@ -78,14 +116,6 @@ const PlayerDiv = styled.div`
         color: ${ p => p.theme.colors.white};
         text-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2)
     }
-
-    &:first-child {
-        /* background: orangered; */
-    }
-
-    &:last-child {
-        /* background: blue; */
-    }
 `
 
 const CoinWrapper = styled.div`
@@ -93,11 +123,11 @@ const CoinWrapper = styled.div`
     display: flex;
     justify-content:center;
     align-items: center;
-    padding: 5rem 0;
+    padding: 7rem 0;
 
     & > span {
-        width: 24rem;
-        height: 24rem;
+        width: 30rem;
+        height: 30rem;
         background: rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         display: flex;
