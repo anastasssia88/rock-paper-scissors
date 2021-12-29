@@ -1,17 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components";
-
-// images
+import { GameContext } from "../context/GameContext"
 import OriginalLogo from "../images/logo.svg"
-
-// components
 import ScoreBox from "../components/ScoreBox"
 
-interface Props {
-  score: number;
-};
 
-const Header: React.FC<Props> = ({ score }) => {
+const Header: React.FC = () => {
+  const keys = useContext(GameContext);
+  const [score, setScore] = keys.scoreKey;
+
   return (
     <StyledDiv>
       <StyledImg src={OriginalLogo} alt="game logo" />

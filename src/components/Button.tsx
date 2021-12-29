@@ -44,7 +44,7 @@ const Primary = styled(Base)`
 const Secondary = styled(Base)`
   position: absolute;
   bottom: 5rem;
-  right: 20%;
+  right: 5rem;
   color: ${ p => p.theme.colors.gray };
   border: 2px solid ${ p => p.theme.colors.headerOutline};
   background: transparent;
